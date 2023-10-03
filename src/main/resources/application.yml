@@ -3,3 +3,19 @@ spring:
     bootstrap-servers: localhost:9092
     consumer:
       group-id: aleph
+  datasource:
+    url: jdbc:h2:mem:kafka-test
+    username: sa
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        show_sql: true
+  h2:
+    console:
+      enabled: true
