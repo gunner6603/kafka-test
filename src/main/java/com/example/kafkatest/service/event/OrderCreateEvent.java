@@ -11,8 +11,9 @@ public class OrderCreateEvent {
 
     private Long orderId;
     private String productName;
+    private String memberEmail;
 
     public static OrderCreateEvent from(Order order) {
-        return new OrderCreateEvent(order.getId(), order.getProductName());
+        return new OrderCreateEvent(order.getId(), order.getProductName(), order.getMemberEmail());
     }
 }

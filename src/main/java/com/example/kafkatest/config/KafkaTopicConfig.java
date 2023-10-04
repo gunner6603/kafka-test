@@ -27,4 +27,9 @@ public class KafkaTopicConfig {
     public NewTopic topic1() {
         return new NewTopic("kafka-test", 1, (short) 1);
     }
+
+    @Bean
+    public NewTopic topic2() {
+        return new NewTopic("order-create", 2, (short) 1);
+    }
 }
