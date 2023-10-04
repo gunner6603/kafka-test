@@ -18,8 +18,9 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final ApplicationEventPublisher eventPublisher;
 
-    public void createOrder(String productName) {
+    public void createOrder(String productName, String memberEmail) {
         final Order order = Order.builder()
+                .memberEmail(memberEmail)
                 .productName(productName)
                 .build();
         orderRepository.save(order);

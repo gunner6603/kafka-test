@@ -13,7 +13,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/order")
-    public void createOrder(@RequestParam String productName) {
-        orderService.createOrder(productName);
+    public void createOrder(@RequestParam String productName, @RequestParam String memberEmail) {
+        orderService.createOrder(productName, memberEmail);
     }
 }
