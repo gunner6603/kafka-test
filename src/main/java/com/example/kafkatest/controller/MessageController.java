@@ -1,6 +1,6 @@
 package com.example.kafkatest.controller;
 
-import com.example.kafkatest.service.KafkaProducer;
+import com.example.kafkatest.infra.KafkaProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

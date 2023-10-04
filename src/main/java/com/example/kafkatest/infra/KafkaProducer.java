@@ -1,6 +1,7 @@
-package com.example.kafkatest.service;
+package com.example.kafkatest.infra;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
@@ -9,6 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class KafkaProducer {
 
     private static final String TOPIC = "kafka-test";
@@ -18,11 +20,9 @@ public class KafkaProducer {
         CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send(TOPIC, message);
         future.whenComplete((result, ex) -> {
             if (ex == null) {
-                System.out.println("Sent message=[" + message +
-                                           "] with offset=[" + result.getRecordMetadata().offset() + "]");
+                log.info("Sent message=[{}] with offset=[{}]", message, result.getRecordMetadata().offset());
             } else {
-                System.out.println("Unable to send message=[" +
-                                           message + "] due to : " + ex.getMessage());
+                log.error("Unable to send message=[{}] due to : [{}]", message, ex.getMessage());
             }
         });
     }
